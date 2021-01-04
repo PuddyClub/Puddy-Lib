@@ -1,0 +1,19 @@
+{
+  "name": "puddy-lib",
+  "version": "1.0.0",
+  "description": "Essential codes to run the other repositories from the Tiny Pudding Account.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TinyPudding/Puddy-Lib.git"
+  },
+  "author": "Yasmin Seidel (JasminDreasond)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TinyPudding/Puddy-Lib/issues"
+  },
+  "homepage": "https://github.com/TinyPudding/Puddy-Lib#readme"
+}
