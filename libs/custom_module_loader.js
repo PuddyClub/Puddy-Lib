@@ -21,7 +21,7 @@ custom_module_manager.validator = function (custom_modules, type) {
 };
 
 // Run
-custom_module_manager.run = async function (custom_modules, db_prepare, hookType) {
+custom_module_manager.run = async function (custom_modules, db_prepare, hookType, options) {
 
     // Run Custom Modules
     const run_custom_module = async function (type) {
@@ -31,8 +31,8 @@ custom_module_manager.run = async function (custom_modules, db_prepare, hookType
 
         // Exist Type
         if (type) {
-            if (custom_modules[hookType] && custom_modules[hookType][type]) {
-                module_list = custom_modules[hookType][type];
+            if (custom_modules && custom_modules[type]) {
+                module_list = custom_modules[type];
             }
         } else {
             module_list = custom_modules;
@@ -81,18 +81,15 @@ custom_module_manager.run = async function (custom_modules, db_prepare, hookType
     };
 
     // Hook Type
-    if (hookType) {
+    if (Array.isArray(options)) {
+        for (const item in options) {
 
-        // Custom Modules
-        if (Array.isArray(custom_modules[hookType].custom)) {
-            await run_custom_module('custom');
+            // Custom Modules
+            if (Array.isArray(custom_modules[options[item]])) {
+                await run_custom_module(options[item]);
+            }
+
         }
-
-        // Default Modules
-        if (Array.isArray(custom_modules[hookType].default)) {
-            await run_custom_module('default');
-        }
-
     }
 
     // Nope
