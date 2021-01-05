@@ -1,7 +1,7 @@
 // Module Base
 const http_base = {
 
-    // https://github.com/TinyPudding/Web-Info/blob/main/WEB_STATUS.md
+    // https://github.com/TinyPudding/Puddy-Lib/blob/main/docs/WEB_STATUS.md
     list: {
 
         // Informational
