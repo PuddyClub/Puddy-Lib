@@ -11,4 +11,7 @@ module.exports = {
     'firebase': require('./firebase'),
     'firebaseEscape': require('./firebase/escape'),
 
+    // Get Obj Type
+    'getObjType': require('./get/objType')
+
 };
