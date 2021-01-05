@@ -81,14 +81,12 @@ custom_module_manager.run = async function (custom_modules, db_prepare, hookType
     };
 
     // Hook Type
-    if (Array.isArray(options)) {
+    const objType = require('../get/objType');
+    if (objType(options, 'object')) {
         for (const item in options) {
-
-            // Custom Modules
-            if (Array.isArray(custom_modules[options[item]])) {
-                await run_custom_module(options[item]);
+            if (options[item] && Array.isArray(custom_modules[item])) {
+                await run_custom_module(item);
             }
-
         }
     }
 
