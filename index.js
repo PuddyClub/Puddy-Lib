@@ -12,6 +12,9 @@ module.exports = {
     'firebaseEscape': require('./firebase/escape'),
 
     // Get Obj Type
-    'getObjType': require('./get/objType')
+    'getObjType': require('./get/objType'),
+
+    //Custom Module Loader
+    'customModuleManager': require('./libs/custom_module_loader')
 
 };
