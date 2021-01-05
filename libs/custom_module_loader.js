@@ -21,7 +21,7 @@ custom_module_manager.validator = function (custom_modules, type) {
 };
 
 // Run
-custom_module_manager.run = async function (custom_modules, hookType) {
+custom_module_manager.run = async function (custom_modules, db_prepare, hookType) {
 
     // Run Custom Modules
     const run_custom_module = async function (type) {
