@@ -24,25 +24,24 @@ firebaseObject.escape = require('./escape');
 
 // Get Database Async
 firebaseObject.getDBAsync = function (data, type = 'value') {
-
-    // The Promise
     return new Promise(function (resolve, reject) {
 
-        // Run Data
-        data.once(type, function (snapshot) {
+        // Try
+        try {
 
-            // Send Result
-            resolve(snapshot);
+            // Run Data
+            data.once(type, function (snapshot) {
+                resolve(snapshot);
+            }, function (errorObject) {
+                reject(errorObject);
+            });
 
-        }, function (errorObject) {
+        }
 
-            // Send Error
-            reject(errorObject);
-
-        });
+        // Error
+        catch (err) { reject(err); }
 
     });
-
 };
 
 // Get Database Data
@@ -55,6 +54,32 @@ firebaseObject.getDBValue = function (data) {
 
     return new_data;
 
+};
+
+// Async Transaction
+firebaseObject.transactionAsync = async function (data, callback) {
+    return Promise(async function (resolve, reject) {
+
+        // Try
+        try {
+
+            // The Transaction
+            const result = await data.transaction(function (current_value) {
+                return callback(current_value);
+            }, function (errorObject) {
+                reject(errorObject);
+            });
+            resolve(result);
+
+        }
+
+        // Error
+        catch (err) { reject(err); }
+
+        // Return
+        return;
+
+    });
 };
 
 // Database Escape
