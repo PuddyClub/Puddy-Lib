@@ -9,7 +9,7 @@ module.exports = function (obj, callback) {
         };
 
         // Prepare Result
-        const result = function (isExtra) {
+        const result = function (isExtra, extraIndex) {
 
             // Count
             items.count++;
@@ -27,7 +27,20 @@ module.exports = function (obj, callback) {
 
                 // Extra Result
                 else {
+
+                    // Check Extra Exist
+                    if (extra.list[extraIndex]) {
+
+                        // Complete Check
+                        extra.list[extraIndex].complete = true;
                     
+                    }
+
+                    // Nope
+                    else {
+                        reject(new Error('forAwait Extra Index not found.'));
+                    }
+
                 }
 
             }
@@ -38,14 +51,14 @@ module.exports = function (obj, callback) {
         };
 
         // Run For
-        const runFor = function (callback, isExtra) {
+        const runFor = function (callback, isExtra = false, index = null) {
 
             // Start the For
             for (const item in obj) {
 
                 // Try
                 try {
-                    callback(item, function () { return result(isExtra); }, extra.functions);
+                    callback(item, function () { return result(isExtra, index); }, extra.extra_function);
                 }
 
                 // Error
@@ -98,7 +111,7 @@ module.exports = function (obj, callback) {
                     run: function (callback) {
 
                         // Run For
-                        runFor(callback, true);
+                        runFor(callback, true, index);
 
                         // Complete
                         return;
@@ -112,7 +125,7 @@ module.exports = function (obj, callback) {
         };
 
         // Run For
-        runFor(callback, false);
+        runFor(callback);
 
         // Complete
         return;
