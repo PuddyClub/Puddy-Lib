@@ -21,6 +21,6 @@ module.exports = {
     'customModuleManager': require('./libs/custom_module_loader'),
 
     // For Await
-    'forAwait': require('./functions/forAwait')
+    'forPromise': require('./functions/forPromise')
 
 };
