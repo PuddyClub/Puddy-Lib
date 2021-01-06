@@ -34,7 +34,7 @@ module.exports = function (obj, callback) {
                 items.items.push(item);
 
                 // Complete
-                if (tems.count >= tems.total) {
+                if (items.count >= items.total) {
 
                     // Normal Result
                     if (!isExtra) {
