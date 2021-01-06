@@ -14,7 +14,10 @@ module.exports = {
     // Get Obj Type
     'getObjType': require('./get/objType'),
 
-    //Custom Module Loader
-    'customModuleManager': require('./libs/custom_module_loader')
+    // Custom Module Loader
+    'customModuleManager': require('./libs/custom_module_loader'),
+
+    // For Await
+    'forAwait': require('./functions/forAwait')
 
 };
