@@ -22,7 +22,7 @@ module.exports = function (obj, callback) {
         };
 
         // Prepare Result
-        const result = function (isExtra, extraIndex) {
+        const result = function (isExtra, extraIndex, item) {
 
             // No Error
             if (!items.error) {
@@ -101,7 +101,7 @@ module.exports = function (obj, callback) {
 
                     // Try
                     try {
-                        callback(item, function () { return result(isExtra, index); }, error_result, extra.extra_function);
+                        callback(item, function () { return result(isExtra, index, item); }, error_result, extra.extra_function);
                     }
 
                     // Error
