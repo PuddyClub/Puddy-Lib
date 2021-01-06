@@ -18,9 +18,6 @@ module.exports = {
     'countObj': require('./get/countObj'),
 
     // Custom Module Loader
-    'customModuleManager': require('./libs/custom_module_loader'),
-
-    // For Await
-    'forPromise': require('./functions/forPromise')
+    'customModuleManager': require('./libs/custom_module_loader')
 
 };
