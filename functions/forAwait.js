@@ -8,53 +8,111 @@ module.exports = function (obj, callback) {
             items: []
         };
 
+        // Prepare Result
+        const result = function (isExtra) {
+
+            // Count
+            items.count++;
+
+            // Add Item
+            items.items.push(item);
+
+            // Complete
+            if (tems.count >= tems.total) {
+
+                // Normal Result
+                if (!isExtra) {
+                    if (!extra.enabled) { resolve(items); }
+                }
+
+                // Extra Result
+                else {
+                    
+                }
+
+            }
+
+            // Return
+            return;
+
+        };
+
+        // Run For
+        const runFor = function (callback, isExtra) {
+
+            // Start the For
+            for (const item in obj) {
+
+                // Try
+                try {
+                    callback(item, function () { return result(isExtra); }, extra.functions);
+                }
+
+                // Error
+                catch (err) {
+                    reject(err);
+                    break;
+                }
+
+            }
+
+            return;
+
+        };
+
         // Detect Object Module
-        const objType = require('../get/objType');
+        const countObj = require('../get/countObj');
+        items.total = countObj(obj);
 
-        // Is Array
-        if(Array.isArray(obj)){
-            items.total = obj.length;
-        }
+        // Prepare Extra
+        const extra = {
 
-        // Object
-        else if (objType(obj, 'object')) {
-            items.total = Object.keys(obj).length;
-        }
+            // Enabled
+            enabled: false,
 
-        // Start the For
-        for (const item in obj) {
+            // Extra List
+            list: [],
 
-            // Try
-            try {
+            // Functions
+            extra_function: function (new_extra) {
 
-                // Send the Callback
-                callback(item, function () {
-
-                    // Count
-                    items.count++;
-
-                    // Add Item
-                    items.items.push(item);
-
-                    // Complete
-                    if(tems.count >= tems.total) {
-                        resolve(items);
-                    }
-
-                    // Return
-                    return;
-                
+                // Prepare Extra
+                extra.enabled = true;
+                extra.list.push({
+                    complete: false,
+                    count: 0,
+                    total: null,
+                    items: []
                 });
 
+                // Index
+                const index = extra.list.length - 1;
+
+                // Get Total
+                extra.list[index] = countObj(new_extra);
+
+                // Callback
+                return {
+
+                    // Run Extra
+                    run: function (callback) {
+
+                        // Run For
+                        runFor(callback, true);
+
+                        // Complete
+                        return;
+
+                    }
+
+                };
+
             }
 
-            // Error
-            catch (err) {
-                reject(err);
-                break;
-            }
+        };
 
-        }
+        // Run For
+        runFor(callback, false);
 
         // Complete
         return;

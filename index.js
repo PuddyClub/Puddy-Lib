@@ -14,6 +14,9 @@ module.exports = {
     // Get Obj Type
     'getObjType': require('./get/objType'),
 
+    // Count Obj
+    'countObj': require('./get/countObj'),
+
     // Custom Module Loader
     'customModuleManager': require('./libs/custom_module_loader'),
 
