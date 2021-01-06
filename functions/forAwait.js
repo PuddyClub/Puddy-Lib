@@ -3,64 +3,82 @@ module.exports = function (obj, callback) {
 
         // Prepare Count
         let items = {
+            error: false,
             count: 0,
             total: null,
             items: []
         };
 
+        // Error Result
+        const error_result = function (err) {
+
+            // Send Error Reject
+            items.error = true;
+            reject(err);
+
+            // Complete
+            return;
+
+        };
+
         // Prepare Result
         const result = function (isExtra, extraIndex) {
 
-            // Count
-            items.count++;
+            // No Error
+            if (!items.error) {
 
-            // Add Item
-            items.items.push(item);
+                // Count
+                items.count++;
 
-            // Complete
-            if (tems.count >= tems.total) {
+                // Add Item
+                items.items.push(item);
 
-                // Normal Result
-                if (!isExtra) {
-                    if (!extra.enabled) { resolve(items); }
-                }
+                // Complete
+                if (tems.count >= tems.total) {
 
-                // Extra Result
-                else {
-
-                    // Check Extra Exist
-                    if (extra.list[extraIndex]) {
-
-                        // Complete Check
-                        extra.list[extraIndex].complete = true;
-
-                        // Check List
-                        let confirmation_checked = true;
-
-                        // Detect Progress
-                        for (const item in extra.list) {
-                            if (!extra.list[item].complete) {
-                                confirmation_checked = false;
-                                break;
-                            }
-                        }
-
-                        // Complete
-                        if (confirmation_checked) {
-
-                            // Add Extra Info
-                            items.extra = extra.list;
-
-                            // Resolve
-                            resolve(items);
-
-                        }
-
+                    // Normal Result
+                    if (!isExtra) {
+                        if (!extra.enabled) { resolve(items); }
                     }
 
-                    // Nope
+                    // Extra Result
                     else {
-                        reject(new Error('forAwait Extra Index not found.'));
+
+                        // Check Extra Exist
+                        if (extra.list[extraIndex]) {
+
+                            // Complete Check
+                            extra.list[extraIndex].complete = true;
+
+                            // Check List
+                            let confirmation_checked = true;
+
+                            // Detect Progress
+                            for (const item in extra.list) {
+                                if (!extra.list[item].complete) {
+                                    confirmation_checked = false;
+                                    break;
+                                }
+                            }
+
+                            // Complete
+                            if (confirmation_checked) {
+
+                                // Add Extra Info
+                                items.extra = extra.list;
+
+                                // Resolve
+                                resolve(items);
+
+                            }
+
+                        }
+
+                        // Nope
+                        else {
+                            reject(new Error('forAwait Extra Index not found.'));
+                        }
+
                     }
 
                 }
@@ -78,14 +96,25 @@ module.exports = function (obj, callback) {
             // Start the For
             for (const item in obj) {
 
-                // Try
-                try {
-                    callback(item, function () { return result(isExtra, index); }, extra.extra_function);
+                // No Error
+                if (!items.error) {
+
+                    // Try
+                    try {
+                        callback(item, function () { return result(isExtra, index); }, error_result, extra.extra_function);
+                    }
+
+                    // Error
+                    catch (err) {
+                        items.error = true;
+                        reject(err);
+                        break;
+                    }
+
                 }
 
                 // Error
-                catch (err) {
-                    reject(err);
+                else {
                     break;
                 }
 
@@ -133,7 +162,7 @@ module.exports = function (obj, callback) {
                     run: function (callback) {
 
                         // Run For
-                        runFor(callback, true, index);
+                        if (!items.error) { runFor(callback, true, index); }
 
                         // Complete
                         return;
