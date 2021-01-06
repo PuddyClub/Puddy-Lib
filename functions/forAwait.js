@@ -33,7 +33,29 @@ module.exports = function (obj, callback) {
 
                         // Complete Check
                         extra.list[extraIndex].complete = true;
-                    
+
+                        // Check List
+                        let confirmation_checked = true;
+
+                        // Detect Progress
+                        for (const item in extra.list) {
+                            if (!extra.list[item].complete) {
+                                confirmation_checked = false;
+                                break;
+                            }
+                        }
+
+                        // Complete
+                        if (confirmation_checked) {
+
+                            // Add Extra Info
+                            items.extra = extra.list;
+
+                            // Resolve
+                            resolve(items);
+
+                        }
+
                     }
 
                     // Nope
