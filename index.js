@@ -17,6 +17,9 @@ module.exports = {
     // Count Obj
     'countObj': require('./get/countObj'),
 
+    // Super string Filter
+    'superStringFilter': require('./get/super_string_filter'),
+
     // Custom Module Loader
     'customModuleManager': require('./libs/custom_module_loader')
 
