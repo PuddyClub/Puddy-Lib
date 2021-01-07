@@ -26,36 +26,36 @@ module.exports = function (list, validator_list) {
             if (objType(validator_list[item2], 'object')) {
 
                 // Validator
-                const validator_timezone = {};
+                const tiny_validator = {};
 
                 // Starts With
-                validator_timezone.startsWith = {};
-                validator_timezone.startsWith.enabled = (typeof validator_list[item2].startsWith === "string");
-                if (validator_timezone.startsWith.enabled) {
-                    validator_timezone.startsWith.result = list[item].startsWith(validator_list[item2].startsWith);
+                tiny_validator.startsWith = {};
+                tiny_validator.startsWith.enabled = (typeof validator_list[item2].startsWith === "string");
+                if (tiny_validator.startsWith.enabled) {
+                    tiny_validator.startsWith.result = list[item].startsWith(validator_list[item2].startsWith);
                 };
 
                 // Ends With
-                validator_timezone.endsWith = {};
-                validator_timezone.endsWith.enabled = (typeof validator_list[item2].endsWith === "string");
-                if (validator_timezone.endsWith.enabled) {
-                    validator_timezone.endsWith.result = list[item].endsWith(validator_list[item2].endsWith);
+                tiny_validator.endsWith = {};
+                tiny_validator.endsWith.enabled = (typeof validator_list[item2].endsWith === "string");
+                if (tiny_validator.endsWith.enabled) {
+                    tiny_validator.endsWith.result = list[item].endsWith(validator_list[item2].endsWith);
                 };
 
                 // RegExp
-                validator_timezone.regexp = {};
-                validator_timezone.regexp.enabled = objType(validator_list[item2].regexp, 'regexp');
-                if (validator_timezone.regexp.enabled) {
-                    validator_timezone.regexp.result = list[item].match(validator_list[item2].regexp);
+                tiny_validator.regexp = {};
+                tiny_validator.regexp.enabled = objType(validator_list[item2].regexp, 'regexp');
+                if (tiny_validator.regexp.enabled) {
+                    tiny_validator.regexp.result = list[item].match(validator_list[item2].regexp);
                 };
 
                 // Check Validator
                 let allowed_timezone = true;
-                for (const item3 in validator_timezone) {
-                    if (validator_timezone[item3].enabled) {
+                for (const item3 in tiny_validator) {
+                    if (tiny_validator[item3].enabled) {
 
                         // Invalid Result
-                        if (!validator_timezone[item3].result) {
+                        if (!tiny_validator[item3].result) {
                             allowed_timezone = false;
                         }
 
