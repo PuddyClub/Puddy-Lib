@@ -57,6 +57,7 @@ module.exports = function (list, validator_list) {
                         // Invalid Result
                         if (!tiny_validator[item3].result) {
                             allowed_timezone = false;
+                            break;
                         }
 
                     }
