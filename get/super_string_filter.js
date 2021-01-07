@@ -23,7 +23,7 @@ module.exports = function (list, validator_list) {
             }
 
             // Object
-            if (objType(validator_list[item2], 'object')) {
+            else if (objType(validator_list[item2], 'object')) {
 
                 // Validator
                 const tiny_validator = {};
