@@ -29,17 +29,17 @@ module.exports = function (list, validator_list) {
                 const tiny_validator = {};
 
                 // Starts With
-                tiny_validator.startsWith = {};
-                tiny_validator.startsWith.enabled = (typeof validator_list[item2].startsWith === "string");
-                if (tiny_validator.startsWith.enabled) {
-                    tiny_validator.startsWith.result = list[item].startsWith(validator_list[item2].startsWith);
+                tiny_validator.starts = {};
+                tiny_validator.starts.enabled = (typeof validator_list[item2].starts === "string");
+                if (tiny_validator.starts.enabled) {
+                    tiny_validator.starts.result = list[item].startsWith(validator_list[item2].starts);
                 };
 
                 // Ends With
-                tiny_validator.endsWith = {};
-                tiny_validator.endsWith.enabled = (typeof validator_list[item2].endsWith === "string");
-                if (tiny_validator.endsWith.enabled) {
-                    tiny_validator.endsWith.result = list[item].endsWith(validator_list[item2].endsWith);
+                tiny_validator.ends = {};
+                tiny_validator.ends.enabled = (typeof validator_list[item2].ends === "string");
+                if (tiny_validator.ends.enabled) {
+                    tiny_validator.ends.result = list[item].endsWith(validator_list[item2].ends);
                 };
 
                 // RegExp
