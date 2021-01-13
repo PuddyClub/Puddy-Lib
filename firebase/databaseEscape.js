@@ -3,6 +3,9 @@ module.exports = function (text, keepPath = false) {
     // is String
     if (typeof text === "string" || typeof text === "number") {
 
+        // Firebase Escape
+        const firebaseEscape = require('./escape');
+
         // New Value
         let new_value = text;
         if (typeof new_value === "number") {
@@ -11,7 +14,7 @@ module.exports = function (text, keepPath = false) {
 
         // Normal
         if (!keepPath) {
-            new_value = firebaseObject.escape.encode(new_value);
+            new_value = firebaseEscape.encode(new_value);
         }
 
         // Keep Path
@@ -20,7 +23,7 @@ module.exports = function (text, keepPath = false) {
             // Separete Path
             new_value = new_value.split('/');
             for (const item in new_value) {
-                new_value[item] = firebaseObject.escape.encode(new_value[item]);
+                new_value[item] = firebaseEscape.encode(new_value[item]);
             }
 
             // Join Path Back
