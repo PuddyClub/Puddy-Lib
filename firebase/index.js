@@ -28,6 +28,9 @@ firebaseObject.getDBAsync = require('./getDBValue');
 // Get Database Data
 firebaseObject.getDBValue = require('./getDBValue');
 
+// Get DB Data
+firebaseObject.getDBData = require('./getDBData');
+
 // Async Transaction
 firebaseObject.transactionDBAsync = require('./transactionDBAsync');
 
