@@ -23,105 +23,16 @@ firebaseObject.get = function (value) {
 firebaseObject.escape = require('./escape');
 
 // Get Database Async
-firebaseObject.getDBAsync = function (data, type = 'value') {
-    return new Promise(function (resolve, reject) {
-
-        // Try
-        try {
-
-            // Run Data
-            data.once(type, function (snapshot) {
-                resolve(snapshot);
-            }, function (errorObject) {
-                reject(errorObject);
-            });
-
-        }
-
-        // Error
-        catch (err) { reject(err); }
-
-    });
-};
+firebaseObject.getDBAsync = require('./getDBValue');
 
 // Get Database Data
-firebaseObject.getDBValue = function (data) {
-
-    let new_data = null;
-    if (data && typeof data.val === "function") {
-        new_data = data.val();
-    }
-
-    return new_data;
-
-};
+firebaseObject.getDBValue = require('./getDBValue');
 
 // Async Transaction
-firebaseObject.transactionAsync = async function (data, callback) {
-    return Promise(async function (resolve, reject) {
-
-        // Try
-        try {
-
-            // The Transaction
-            const result = await data.transaction(function (current_value) {
-                return callback(current_value);
-            }, function (errorObject) {
-                reject(errorObject);
-            });
-            resolve(result);
-
-        }
-
-        // Error
-        catch (err) { reject(err); }
-
-        // Return
-        return;
-
-    });
-};
+firebaseObject.transactionDBAsync = require('./transactionDBAsync');
 
 // Database Escape
-firebaseObject.databaseEscape = function (text, keepPath = false) {
-
-    // is String
-    if (typeof text === "string" || typeof text === "number") {
-
-        // New Value
-        let new_value = text;
-        if (typeof new_value === "number") {
-            new_value = String(new_value);
-        }
-
-        // Normal
-        if (!keepPath) {
-            new_value = firebaseObject.escape.encode(new_value);
-        }
-
-        // Keep Path
-        else {
-
-            // Separete Path
-            new_value = new_value.split('/');
-            for (const item in new_value) {
-                new_value[item] = firebaseObject.escape.encode(new_value[item]);
-            }
-
-            // Join Path Back
-            new_value = new_value.join('/');
-
-        }
-
-        // Complete
-        return new_value;
-
-    }
-
-    // Nothing
-    else { return null; }
-
-};
+firebaseObject.databaseEscape = require('./databaseEscape');
 
 // Start Modules App
 firebaseObject.startModule = function (value, item) {
