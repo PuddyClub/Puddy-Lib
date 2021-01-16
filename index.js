@@ -17,6 +17,9 @@ module.exports = {
     // Count Obj
     'countObj': require('./get/countObj'),
 
+    // HTTP Auth Generator
+    'httpAuth': require('./http/auth'),
+
     // User IP
     'getUserIP': require('./get/userIP'),
 
