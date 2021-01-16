@@ -4,22 +4,35 @@ let logger = null;
 // Module Base
 const logBase = function (type, args) {
 
-    // Try Get Log
-    if (!logger) {
-        try {
-            logger = require("firebase-functions/lib/logger");
-        } catch (err) {
-            logger = null;
-            console.error(err);
-        }
-    }
+    // Production
+    if (!require('./isEmulator')()) {
 
-    // Exist Log
-    if (logger) {
-        return {
-            result: logger[type].apply(logger, args),
-            type: 'firebase-functions/lib/logger'
-        };
+        // Try Get Log
+        if (!logger) {
+            try {
+                logger = require("firebase-functions/lib/logger");
+            } catch (err) {
+                logger = null;
+                console.error(err);
+            }
+        }
+
+        // Exist Log
+        if (logger) {
+            return {
+                result: logger[type].apply(logger, args),
+                type: 'firebase-functions/lib/logger'
+            };
+        }
+
+        // Nope
+        else {
+            return {
+                result: console[type].apply(console, args),
+                type: 'console/javascript-vanilla'
+            };
+        }
+
     }
 
     // Nope

@@ -40,6 +40,9 @@ firebaseObject.databaseEscape = require('./databaseEscape');
 // Logger
 firebaseObject.logger = require('./logger');
 
+// Is Emulator
+firebaseObject.isEmulator = require('./isEmulator');
+
 // Start Modules App
 firebaseObject.startModule = function (value, item) {
 
