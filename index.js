@@ -17,6 +17,9 @@ module.exports = {
     // Count Obj
     'countObj': require('./get/countObj'),
 
+    // User IP
+    'getUserIP': require('./get/userIP'),
+
     // Super string Filter
     'superStringFilter': require('./get/super_string_filter'),
 
