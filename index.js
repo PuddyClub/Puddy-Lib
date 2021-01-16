@@ -20,6 +20,9 @@ module.exports = {
     // HTTP Auth Generator
     'httpAuth': require('./http/auth'),
 
+    // Replace Async
+    'replaceAsync': require('./libs/replaceAsync'),
+
     // User IP
     'getUserIP': require('./get/userIP'),
 
