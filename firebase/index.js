@@ -37,6 +37,9 @@ firebaseObject.transactionDBAsync = require('./transactionDBAsync');
 // Database Escape
 firebaseObject.databaseEscape = require('./databaseEscape');
 
+// Logger
+firebaseObject.logger = require('./logger');
+
 // Start Modules App
 firebaseObject.startModule = function (value, item) {
 
