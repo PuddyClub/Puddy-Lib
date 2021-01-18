@@ -30,6 +30,9 @@ module.exports = {
     'superStringFilter': require('./get/super_string_filter'),
 
     // Custom Module Loader
-    'customModuleManager': require('./libs/custom_module_loader')
+    'customModuleManager': require('./libs/custom_module_loader'),
+
+    // Errors Callback
+    'errorsCallback': require('./http/errorsCallback')
 
 };
