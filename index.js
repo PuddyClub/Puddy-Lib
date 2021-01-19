@@ -36,6 +36,9 @@ module.exports = {
     'errorsCallback': require('./http/errorsCallback'),
 
     // Domain Validator
-    'domainValidator': require('./http/domainValidator')
+    'domainValidator': require('./http/domainValidator'),
+
+    // Fetch JSON
+    'fetchJSON': require('./http/fetchJSON')
 
 };
