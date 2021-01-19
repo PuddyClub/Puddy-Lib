@@ -4,19 +4,6 @@ const check_domain = {
     // Validators
     validators: [
 
-        // Hostname
-        {
-            type: 'hostname',
-            callback: function (req, the_domain) {
-                const isString = (typeof req.hostname === "string");
-                if (the_domain) {
-                    if (isString && req.hostname === the_domain) { return true; } else { return false; }
-                } else {
-                    if (isString) { return req.hostname; } else { return null; }
-                }
-            }
-        },
-
         // X Forwarded Host
         {
             type: 'x-forwarded-host',
@@ -26,6 +13,19 @@ const check_domain = {
                     if (isString && req.headers['x-forwarded-host'] === the_domain) { return true; } else { return false; }
                 } else {
                     if (isString) { return req.headers['x-forwarded-host']; } else { return null; }
+                }
+            }
+        },
+
+        // Hostname
+        {
+            type: 'hostname',
+            callback: function (req, the_domain) {
+                const isString = (typeof req.hostname === "string");
+                if (the_domain) {
+                    if (isString && req.hostname === the_domain) { return true; } else { return false; }
+                } else {
+                    if (isString) { return req.hostname; } else { return null; }
                 }
             }
         },
