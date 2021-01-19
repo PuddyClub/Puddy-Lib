@@ -33,6 +33,9 @@ module.exports = {
     'customModuleManager': require('./libs/custom_module_loader'),
 
     // Errors Callback
-    'errorsCallback': require('./http/errorsCallback')
+    'errorsCallback': require('./http/errorsCallback'),
+
+    // Domain Validator
+    'domainValidator': require('./http/domainValidator')
 
 };
