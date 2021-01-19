@@ -16,5 +16,7 @@
     "url": "https://github.com/TinyPudding/Puddy-Lib/issues"
   },
   "homepage": "https://github.com/TinyPudding/Puddy-Lib#readme",
-  "dependencies": {}
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
 }
