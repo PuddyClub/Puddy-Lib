@@ -1,5 +1,5 @@
 module.exports = function (app, callback) {
-    return app.use(function (err, req, res, next) {
+    return function (err, req, res, next) {
 
         // treat as 404
         if (err.message
@@ -18,5 +18,5 @@ module.exports = function (app, callback) {
         // Complete
         return;
 
-    });
+    };
 };
