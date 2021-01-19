@@ -1,6 +1,6 @@
 {
   "name": "@tinypudding/puddy-lib",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Essential codes to run the other repositories from the Tiny Pudding Account.",
   "main": "index.js",
   "scripts": {
