@@ -10,7 +10,7 @@ module.exports = function (req, cfg) {
     var prepareUrlPath = req.url.split('/');
     req.urlPath = [];
     for (const item in prepareUrlPath) {
-        if(item !== 0) {
+        if(Number(item) > 0) {
 
             // Insert URL Path
             req.urlPath.push(prepareUrlPath[item].split(/[?#]/)[0]);
