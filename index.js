@@ -40,6 +40,6 @@ module.exports = {
 
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
-    'fetchTEXT': require('./http/fetch/text')
+    'fetchText': require('./http/fetch/text')
 
 };
