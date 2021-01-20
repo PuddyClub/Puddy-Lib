@@ -7,8 +7,19 @@ module.exports = function (req, cfg) {
     let domainStatus = { verified: false, domain: checkDomain.get(req) };
 
     // Path
-    req.urlPath = req.url.split('/');
-    req.urlPath.shift();
+    var prepareUrlPath = req.url.split('/');
+    req.urlPath = [];
+    for (const item in prepareUrlPath) {
+        if(item !== 0) {
+
+            // Insert URL Path
+            req.urlPath.push(prepareUrlPath[item].split(/[?#]/)[0]);
+        
+        }
+    }
+
+    // Delete Prepare
+    delete prepareUrlPath;
 
     // Is Obj
     const objType = require('../get/objType');
