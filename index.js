@@ -38,7 +38,8 @@ module.exports = {
     // Domain Validator
     'domainValidator': require('./http/domainValidator'),
 
-    // Fetch JSON
-    'fetchJSON': require('./http/fetchJSON')
+    // Fetch
+    'fetchJSON': require('./http/fetch/json'),
+    'fetchTEXT': require('./http/fetch/text')
 
 };
