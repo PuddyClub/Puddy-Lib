@@ -40,9 +40,6 @@ module.exports = {
 
     // Crypto
     'crypto': require('./crypto'),
-
-    // MySQL
-    'mysql': require('./libs/mySQL'),
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),

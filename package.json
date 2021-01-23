@@ -17,9 +17,6 @@
   },
   "homepage": "https://github.com/TinyPudding/Puddy-Lib#readme",
   "dependencies": {
-    "clone": "^2.1.2",
-    "lodash": "^4.17.20",
-    "node-fetch": "^2.6.1",
-    "util": "^0.12.3"
+    "node-fetch": "^2.6.1"
   }
 }
