@@ -7,10 +7,6 @@ module.exports = {
     // Check Domain
     'checkDomain': require('./http/check_domain'),
 
-    // Firebase
-    'firebase': require('./firebase'),
-    'firebaseEscape': require('./firebase/escape'),
-
     // Get Obj Type
     'getObjType': require('./get/objType'),
 
