@@ -1,5 +1,5 @@
 // Modules
-module.exports = function (mysql, databases, cfg, isFirebase = false) {
+module.exports = function (mysql, databases, cfg, proxyType = false) {
     return new Promise(function (resolve, reject) {
 
         // Modules
@@ -35,7 +35,7 @@ module.exports = function (mysql, databases, cfg, isFirebase = false) {
                 }
 
                 // Is Firebase
-                if (isFirebase && !isEmulator()) {
+                if ((proxyType === "firebase" && !isEmulator()) || proxyType === "google_cloud") {
                     databaseList[item].data.socketPath = databaseList[item].firebase.socketPath;
                 }
 
