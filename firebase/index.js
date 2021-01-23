@@ -23,7 +23,7 @@ firebaseObject.get = function (value) {
 firebaseObject.escape = require('./escape');
 
 // Get MySQL
-firebaseObject.mysql = require('../libs/mySQL');
+firebaseObject.mysql = require('./mySQL');
 
 // Get Database Async
 firebaseObject.getDBAsync = require('./getDBAsync');
