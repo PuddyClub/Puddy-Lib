@@ -5,6 +5,6 @@ module.exports = function (tinyCrypto, text) {
     let cipher = crypto.createCipheriv(tinyCrypto.algorithm, Buffer.from(tinyCrypto.key), iv);
     let encrypted = cipher.update(text);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return iv.toString('hex') + ':' + encrypted.toString('hex');
+    return iv.toString(tinyCrypto.stringType) + ':' + encrypted.toString(tinyCrypto.stringType);
 
 };

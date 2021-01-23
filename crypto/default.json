@@ -1,5 +1,6 @@
 {
     "IV_LENGTH": 16,
     "algorithm": "aes-256-cbc",
-    "key": "tinypudding123456789012345678900"
+    "key": "tinypudding123456789012345678900",
+    "stringType": "hex"
 }
