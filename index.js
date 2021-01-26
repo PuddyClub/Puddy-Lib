@@ -38,6 +38,9 @@ module.exports = {
     'crypto': require('./crypto'),
 
     // Dice
+    'pagination': require('./get/pagination'),
+
+    // Dice
     'dice': require('./libs/dice'),
 
     // User Level
