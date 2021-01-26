@@ -40,6 +40,9 @@ module.exports = {
     // Dice
     'dice': require('./libs/dice'),
 
+    // User Level
+    'userLevel': require('./libs/userLevel'),
+
     // Get URL Parameter by Name
     'getURLParameterByName': require('./http/getParameterByName'),
 
