@@ -1,7 +1,7 @@
 module.exports = function (query, page, total, url = '', extraClass = '', extraClass2 = '') {
 
     if (url) {
-        const params = require('./queryUrlJSON')(url);
+        const params = require('../get/queryUrlJSON')(url);
         if (Object.keys(params).length > 0) {
             if (params.page) {
                 url = url.replace('&' + query + '=' + params.page, '').replace('?' + query + '=' + params.page, '?').replace('?&', '?');
