@@ -50,7 +50,7 @@ module.exports = {
     'getURLParameterByName': require('./http/getParameterByName'),
 
     // Percentage
-    'percentage': require('./get/percentage'),
+    'percentage': require('./libs/percentage'),
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
