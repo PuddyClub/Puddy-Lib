@@ -38,6 +38,23 @@ class levelup {
         return this.expLevel * user.level;
     }
 
+    // Set Exp Value
+    set(user, value) {
+
+        // Set the new value
+        user.exp = value;
+
+        // Validator
+        this.expValidator(user);
+
+        // Get Total Exp
+        user.totalExp = this.getTotalExp(user);
+
+        // Complete
+        return user;
+
+    }
+
     // Give
     give(user, extraExp = 0, type = 'add') {
 
@@ -49,6 +66,7 @@ class levelup {
         // Get Total Exp
         user.totalExp = this.getTotalExp(user);
 
+        // Complete
         return user;
 
     }
@@ -64,6 +82,7 @@ class levelup {
         // Get Total Exp
         user.totalExp = this.getTotalExp(user);
 
+        // Complete
         return user;
 
     }
