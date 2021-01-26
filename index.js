@@ -46,8 +46,9 @@ module.exports = {
     // User Level
     'userLevel': require('./libs/userLevel'),
 
-    // Get URL Parameter by Name
-    'getURLParameterByName': require('./http/getParameterByName'),
+    // Get URL Parameter 
+    'getQueryUrlByName': require('./get/queryUrlByName'),
+    'getQueryUrlJSON': require('./get/queryUrlJSON'),
 
     // Percentage
     'percentage': require('./libs/percentage'),
