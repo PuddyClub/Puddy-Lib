@@ -36,6 +36,15 @@ module.exports = {
 
     // Crypto
     'crypto': require('./crypto'),
+
+    // Dice
+    'dice': require('./libs/dice'),
+
+    // Get URL Parameter by Name
+    'getURLParameterByName': require('./http/getParameterByName'),
+
+    // Percentage
+    'percentage': require('./get/percentage'),
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
