@@ -29,8 +29,8 @@ class levelup {
     }
 
     // Exp Generator
-    expGenerator(extraExp = 0) {
-        return Number(Math.floor(Math.random() * ((this.giveExp - 1) + 1) + 1)) + extraExp;
+    expGenerator() {
+        return Number(Math.floor(Math.random() * ((this.giveExp - 1) + 1) + 1));
     }
 
     // Progress
@@ -39,10 +39,11 @@ class levelup {
     }
 
     // Give
-    give(user, extraExp = 0, extraOnly = false) {
+    give(user, extraExp = 0, type = 'add') {
 
         // Get the new user exp
-        user.exp = user.exp + this.expGenerator(extraExp);
+        if (type === "add") { user.exp += this.expGenerator() + extraExp; }
+        else if (type === "extra") { user.exp += extraExp; }
         this.expValidator(user);
 
         // Get Total Exp
@@ -53,10 +54,11 @@ class levelup {
     }
 
     // Remove
-    remove(user, extraExp = 0, extraOnly = false) {
+    remove(user, extraExp = 0, type = 'add') {
 
         // Get the new user exp
-        user.exp = user.exp - this.expGenerator(extraExp);
+        if (type === "add") { user.exp -= this.expGenerator() + extraExp }
+        else if (type === "extra") { user.exp -= extraExp }
         this.expValidator(user);
 
         // Get Total Exp
