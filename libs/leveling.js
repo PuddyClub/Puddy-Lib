@@ -22,7 +22,7 @@ class levelup {
 
         // Insert Result
         totalexp = totalexp + user.exp;
-        
+
         // Complete
         return totalexp;
 
@@ -39,18 +39,11 @@ class levelup {
     }
 
     // Give
-    give(user, extraExp = 0) {
+    give(user, extraExp = 0, extraOnly = false) {
 
         // Get the new user exp
         user.exp = user.exp + this.expGenerator(extraExp);
-        
-        // Add Level
-        if (user.exp > this.expLevel * user.level) {
-
-            user.level++;
-            user.exp = 0;
-
-        }
+        this.expValidator(user);
 
         // Get Total Exp
         user.totalExp = this.getTotalExp(user);
@@ -60,22 +53,39 @@ class levelup {
     }
 
     // Remove
-    remove(user, extraExp = 0) {
+    remove(user, extraExp = 0, extraOnly = false) {
 
         // Get the new user exp
         user.exp = user.exp - this.expGenerator(extraExp);
-        
+        this.expValidator(user);
+
+        // Get Total Exp
+        user.totalExp = this.getTotalExp(user);
+
+        return user;
+
+    }
+
+    // Exp Validator
+    expValidator(user) {
+
+        // Add Level
+        if (user.exp > this.expLevel * user.level) {
+
+            user.level++;
+            user.exp = 0;
+
+        }
+
         // Remove Level
-        if (user.exp < 1) {
+        else if (user.exp < 1) {
 
             user.level--;
             user.exp = this.expLevel * user.level;
 
         }
 
-        // Get Total Exp
-        user.totalExp = this.getTotalExp(user);
-
+        // Complete
         return user;
 
     }
