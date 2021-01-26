@@ -90,19 +90,49 @@ class levelup {
     // Exp Validator
     expValidator(user) {
 
-        // Add Level
-        if (user.exp > this.expLevel * user.level) {
+        // Prepare Extra Value
+        let extraValue = 0;
 
+        // Exp Next Level
+        const nextLevelExp = this.expLevel * user.level;
+
+        // Add Level
+        if (user.exp > nextLevelExp) {
+
+            // Add Level
             user.level++;
+
+            // Set Extra Value
+            extraValue += user.exp - nextLevelExp;
+
+            // Set the new total exp
             user.exp = 0;
+
+            // Add More Level
+            if(extraValue > 0) {
+                return this.give(user, extraValue, 'extra');
+            }
 
         }
 
         // Remove Level
         else if (user.exp < 1) {
 
+            // Remove Level
             user.level--;
+
+            // Remove more level
+            if(user.exp < 0) {
+                extraValue = Math.abs(user.exp);
+            }
+
+            // Set the new total exp
             user.exp = this.expLevel * user.level;
+
+            // Remove More Level
+            if(extraValue > 0) {
+                return this.remove(user, extraValue, 'extra');
+            }
 
         }
 
