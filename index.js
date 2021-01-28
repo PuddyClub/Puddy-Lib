@@ -20,7 +20,7 @@ module.exports = {
     'replaceAsync': require('./libs/replaceAsync'),
 
     // User IP
-    'getUserIP': require('./get/userIP'),
+    'getUserIP': require('./http/userIP'),
 
     // Super string Filter
     'superStringFilter': require('./get/super_string_filter'),
