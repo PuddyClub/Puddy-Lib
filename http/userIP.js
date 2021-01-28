@@ -1,14 +1,20 @@
 
-module.exports = function (req, options = {}) {
+module.exports = function (req, options) {
 
     // Prepare IP Value
     let ip = { value: null, type: null };
+
+    // Prepare Config
+    const _ = require('lodash');
+    const tinyCfg = _.defaultsDeep({}, options, {
+        isFirebase: false
+    });
 
     // Detect Headers
     if (req.headers) {
 
         // Exist Client IP
-        if (options.isFirebase && req.headers['fastly-client-ip']) {
+        if (tinyCfg.isFirebase && req.headers['fastly-client-ip']) {
             ip.value = req.headers['fastly-client-ip'];
             ip.type = 'fastly-client-ip';
         }
