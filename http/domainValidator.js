@@ -8,12 +8,12 @@ module.exports = function (req, cfg) {
 
     // Path
     var prepareUrlPath = req.url.split('/');
-    req.urlPath = [];
+    req.url_path = [];
     for (const item in prepareUrlPath) {
         if(Number(item) > 0) {
 
             // Insert URL Path
-            req.urlPath.push(prepareUrlPath[item].split(/[?#]/)[0]);
+            req.url_path.push(prepareUrlPath[item].split(/[?#]/)[0]);
         
         }
     }
