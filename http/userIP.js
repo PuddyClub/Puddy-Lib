@@ -33,6 +33,11 @@ module.exports = function (req, options) {
         ip.type = 'connection.remoteAddress';
     }
 
+    // Convert IP Value
+    if(typeof ip.value === "string") {
+        ip.value = ip.value.split(',');
+    }
+
     // Return Value
     return ip;
 
