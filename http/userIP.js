@@ -33,8 +33,14 @@ module.exports = function (req, options) {
         ip.type = 'connection.remoteAddress';
     }
 
+    // Req IP
+    if (typeof ip.value !== "string" && req.ip) {
+        ip.value = req.ip;
+        ip.type = 'req.ip';
+    }
+
     // Convert IP Value
-    if(typeof ip.value === "string") {
+    if (typeof ip.value === "string") {
         ip.value = ip.value.split(',');
     }
 
