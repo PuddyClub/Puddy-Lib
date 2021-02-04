@@ -20,7 +20,7 @@ module.exports = function (req, options) {
         }
 
         // Forwarded
-        else if (req.headers['x-forwarded-for']) {
+        if (typeof ip.value !== "string" && req.headers['x-forwarded-for']) {
             ip.value = req.headers['x-forwarded-for'];
             ip.type = 'x-forwarded-for';
         }
@@ -28,7 +28,7 @@ module.exports = function (req, options) {
     }
 
     // Connection
-    if (!ip.value && req.connection && req.connection.remoteAddress) {
+    if (typeof ip.value !== "string" && req.connection && req.connection.remoteAddress) {
         ip.value = req.connection.remoteAddress;
         ip.type = 'connection.remoteAddress';
     }
