@@ -4,17 +4,17 @@ module.exports = function (req, cfg) {
     const checkDomain = require('./check_domain');
 
     // Start Domain Verification
-    let domainStatus = { verified: false, domain: checkDomain.get(req) };
+    let domainStatus = { verified: false, domain: checkDomain.get(req), isStaticPath: false };
 
     // Path
     var prepareUrlPath = req.url.split('/');
     req.url_path = [];
     for (const item in prepareUrlPath) {
-        if(Number(item) > 0) {
+        if (Number(item) > 0) {
 
             // Insert URL Path
             req.url_path.push(prepareUrlPath[item].split(/[?#]/)[0]);
-        
+
         }
     }
 
@@ -29,7 +29,7 @@ module.exports = function (req, cfg) {
         let firebaseIsEmulator = false;
         try {
             firebaseIsEmulator = require('@tinypudding/firebase-lib/isEmulator')();
-        } catch(err) {
+        } catch (err) {
             firebaseIsEmulator = false;
         }
 
@@ -46,6 +46,21 @@ module.exports = function (req, cfg) {
                     break;
                 }
             }
+        }
+
+        // is Valid
+        if (domainStatus.verified) {
+
+            // Validate Static Path
+            if (Array.isArray(cfg.staticPath)) {
+                for (const item in cfg.staticPath) {
+                    if (typeof cfg.staticPath[item] === "string" && req.url.startsWith(cfg.staticPath[item])) {
+                        domainStatus.isStaticPath = true;
+                        break;
+                    }
+                }
+            }
+
         }
 
     }
