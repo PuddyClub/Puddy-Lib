@@ -4,6 +4,9 @@ module.exports = {
     // HTTP/1.0 Render
     'HTTP/1.0': require('./http/HTTP-1.0'),
 
+    // Get Module
+    'getModule': require('./get/module'),
+
     // Check Domain
     'checkDomain': require('./http/check_domain'),
 

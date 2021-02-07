@@ -26,12 +26,9 @@ module.exports = function (req, cfg) {
     if (objType(cfg, 'object')) {
 
         // Firebase Is Emulator
+        const isEmulator = require('../get/module')('@tinypudding/firebase-lib/isEmulator');
         let firebaseIsEmulator = false;
-        try {
-            firebaseIsEmulator = require('@tinypudding/firebase-lib/isEmulator')();
-        } catch (err) {
-            firebaseIsEmulator = false;
-        }
+        if (isEmulator) { firebaseIsEmulator = isEmulator(); }
 
         // Verify String
         if ((typeof cfg.domain === "string" && cfg.domain === domainStatus.domain) || firebaseIsEmulator) {
