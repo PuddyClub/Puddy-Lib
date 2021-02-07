@@ -1,7 +1,13 @@
-module.exports = function (res, next, file, date, timezone) {
+module.exports = function (res, next, data) {
+
+    // Prepare Config
+    const _ = require('lodash');
+    const tinyCfg = _.defaultsDeep({}, data, {
+        timezone: 'Universal'
+    });
 
     // Is String
-    if (typeof file === "string") {
+    if (typeof tinyCfg.file === "string") {
 
         // Get Module
         const optionalRequire = require('../get/module');
@@ -23,22 +29,22 @@ module.exports = function (res, next, file, date, timezone) {
         res.removeHeader('X-Powered-By');
 
         // MD5
-        if (md5) { res.setHeader('Content-MD5', Buffer.from(md5(file)).toString('base64')); }
+        if (md5) { res.setHeader('Content-MD5', Buffer.from(md5(tinyCfg.file)).toString('base64')); }
 
         // Time
-        if (moment) { res.setHeader('Last-Modified', moment.tz(date, timezone).toString()); }
+        if (tinyCfg.date && moment) { res.setHeader('Last-Modified', moment.tz(tinyCfg.date, tinyCfg.timezone).toString()); }
 
         // Cache Control
-        if (typeof tinyThis.data.fileMaxAge === "number") {
-            res.setHeader('Expires', moment.tz('UTC').add(tinyThis.data.fileMaxAge, 'seconds').toString());
-            res.set('Cache-Control', `public, max-age=${tinyThis.data.fileMaxAge}`);
+        if (typeof tinyCfg.fileMaxAge === "number") {
+            res.setHeader('Expires', moment.tz('UTC').add(tinyCfg.fileMaxAge, 'seconds').toString());
+            res.set('Cache-Control', `public, max-age=${tinyCfg.fileMaxAge}`);
         }
 
         // File Size
-        if (byteLength) { res.setHeader('Content-Length', byteLength.byteLength(file)); }
+        if (byteLength) { res.setHeader('Content-Length', byteLength.byteLength(tinyCfg.file)); }
 
         // Send FIle
-        res.send(file);
+        res.send(tinyCfg.file);
 
     }
 
