@@ -1,4 +1,4 @@
-module.exports = function (domain, httpResult = 'https') {
+module.exports = function (domain, port, httpResult = 'https') {
 
     // Domain Selected
     let domainSelected = null;
@@ -16,11 +16,28 @@ module.exports = function (domain, httpResult = 'https') {
     // Domain
     if (typeof domainSelected === "string") {
 
+        // Port
+        let finalPort = port;
+        let finalURL = '';
+        if (typeof finalPort === "number" && finalPort !== 80 && finalPort !== 443) {
+            finalPort = ':' + finalPort;
+        } else {
+            finalPort = '';
+        }
+
         // Normal Domain
-        if (!domainSelected.startsWith('localhost:')) { return `${httpResult}://${domainSelected}`; }
+        if (!domainSelected.startsWith('localhost:') && !domainSelected === "localhost") { finalURL = `${httpResult}://${domainSelected}`; }
 
         // Localhost
-        else { return `http://${domainSelected}`; }
+        else { finalURL = `http://${domainSelected}`; }
+
+        // Exist Port
+        if (finalPort && typeof finalURL.split(':')[2] !== "string") {
+            finalURL += finalPort;
+        }
+
+        // Complete
+        return finalURL;
 
     }
 
