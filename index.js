@@ -40,8 +40,11 @@ module.exports = {
     // Crypto
     'crypto': require('./crypto'),
 
-    // Dice
+    // Pagination
     'pagination': require('./get/pagination'),
+
+    // Get Domain URL
+    'getDomainURL': require('./http/getDomainURL'),
 
     // Dice
     'dice': require('./libs/dice'),
