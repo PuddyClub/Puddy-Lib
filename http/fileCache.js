@@ -3,7 +3,8 @@ module.exports = function (res, next, data) {
     // Prepare Config
     const _ = require('lodash');
     const tinyCfg = _.defaultsDeep({}, data, {
-        timezone: 'Universal'
+        timezone: 'Universal',
+        contentType: 'application/javascript'
     });
 
     // Is String
@@ -18,7 +19,7 @@ module.exports = function (res, next, data) {
         const byteLength = optionalRequire('byte-length');
 
         // File Type
-        res.setHeader('Content-Type', 'application/javascript');
+        res.setHeader('Content-Type', tinyCfg.contentType);
         res.setHeader('Accept-Ranges', 'bytes');
         res.setHeader('Access-Control-Allow-Origin', 'same-origin');
         res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
