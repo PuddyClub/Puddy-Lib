@@ -56,6 +56,9 @@ module.exports = {
     'getQueryUrlByName': require('./get/queryUrlByName'),
     'getQueryUrlJSON': require('./get/queryUrlJSON'),
 
+    // Get Decimal Color
+    'getDecimalColor': require('./get/decimalColor'),
+
     // Percentage
     'percentage': require('./libs/percentage'),
     
