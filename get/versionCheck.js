@@ -4,12 +4,12 @@ const check_version = {
     t: null
 };
 
-module.exports = async function (package) {
+// Modules
+const latestVersion = require('latest-version');
+const compareVersions = require('compare-versions');
+const moment = require('moment');
 
-    // Modules
-    const latestVersion = require('latest-version');
-    const compareVersions = require('compare-versions');
-    const moment = require('moment');
+module.exports = async function (package) {
 
     // Time Now
     const now = moment();
