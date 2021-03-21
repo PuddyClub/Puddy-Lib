@@ -61,6 +61,9 @@ module.exports = {
 
     // Percentage
     'percentage': require('./libs/percentage'),
+
+    // Version Check
+    'versionCheck': require('./get/versionCheck'),
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
