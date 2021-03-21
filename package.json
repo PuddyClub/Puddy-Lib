@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/TinyPudding/Puddy-Lib#readme",
   "dependencies": {
+    "compare-versions": "^3.6.0",
+    "latest-version": "^5.1.0",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "node-fetch": "^2.6.1"
   }
 }
