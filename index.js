@@ -64,6 +64,9 @@ module.exports = {
 
     // Version Check
     'versionCheck': require('./get/versionCheck'),
+
+    // Socket IO
+    'socketIO': require('./get/socket.io'),
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
