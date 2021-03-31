@@ -21,21 +21,8 @@ module.exports = function (socket, ioCache) {
     // Get User IP
     const ip = require('../../http/userIP')(socket.handshake);
 
-    // Create Blacklist
-    if (!Array.isArray(ioCache.blocklick)) {
-        ioCache.blocklick = [];
-    }
-
-    // All Events
-    var onevent = socket.onevent;
-    socket.onevent = function (packet) {
-        var args = packet.data || [];
-        onevent.call(this, packet);    // original call
-        packet.data = ["*"].concat(args);
-        onevent.call(this, packet);      // additional call to catch-all
-    };
-
-    socket.on('*', function () {
+    // Verify IP
+    const verifyIP = function () {
 
         // Create Item
         if (!floodPanel[ip]) {
@@ -48,7 +35,7 @@ module.exports = function (socket, ioCache) {
             // Remove Ban
             const indexBan = ioCache.blocklick.indexOf(ip);
             if (indexBan > -1) {
-                indexBan.splice(indexBan, 1);
+                ioCache.blocklick.splice(indexBan, 1);
             }
 
         }
@@ -66,6 +53,31 @@ module.exports = function (socket, ioCache) {
 
         }
 
+        // Complete
+        return;
+
+    };
+
+    // Create Blacklist
+    if (!Array.isArray(ioCache.blocklick)) {
+        ioCache.blocklick = [];
+    }
+
+    // All Events
+    var onevent = socket.onevent;
+    socket.onevent = function (packet) {
+        var args = packet.data || [];
+        onevent.call(this, packet);    // original call
+        packet.data = ["*"].concat(args);
+        onevent.call(this, packet);      // additional call to catch-all
+    };
+
+    // Verify Action
+    socket.on('*', function () {
+        return verifyIP();
     });
+
+    // First Verify
+    return verifyIP();
 
 };
