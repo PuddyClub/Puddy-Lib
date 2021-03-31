@@ -15,7 +15,6 @@ module.exports = function (socket, ioCache, token) {
                 ioCache.ids[socket.id] = user.id;
 
                 ioCache.totalUsers++;
-                socket.broadcast.emit('userCount', ioCache.totalUsers);
 
             }
 
