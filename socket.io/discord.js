@@ -27,7 +27,7 @@ module.exports = function (socket, ioCache, token) {
             ioCache.users[user.id].data = user;
 
             // ID Data
-            ioCache.users[user.id].ids[socket.id] = socket;
+            ioCache.users[user.id].ids[socket.id] = { socket: socket };
 
             // Disconnect
             socket.on('disconnect', function () {
