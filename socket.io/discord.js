@@ -5,6 +5,11 @@ module.exports = function (socket, ioCache, token) {
         const getUser = require('@tinypudding/discord-oauth2/api/getUser');
         getUser(token).then(user => {
 
+            // Create Users Cache
+            if (!ioCache.users) { ioCache.users = {}; }
+            if (!ioCache.ids) { ioCache.ids = {}; }
+            if (typeof ioCache.totalUsers !== "number") { ioCache.totalUsers = 0; }
+
             // User Data
             if (!ioCache.users[user.id]) {
 
