@@ -67,6 +67,12 @@ module.exports = {
 
     // Socket IO
     'socketIO': require('./get/socket.io'),
+
+    // Array Sort Positions
+    'arraySortPositions': require('./libs/arraySortPositions'),
+
+    // Capitalize
+    'capitalize': require('./libs/capitalize'),
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
