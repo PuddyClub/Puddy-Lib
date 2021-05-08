@@ -76,6 +76,9 @@ module.exports = {
     
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
-    'fetchText': require('./http/fetch/text')
+    'fetchText': require('./http/fetch/text'),
+
+    // csrfToken Analyze
+    'csrfTokenAnalyze': require('./http/csrfTokenAnalyze')
 
 };
