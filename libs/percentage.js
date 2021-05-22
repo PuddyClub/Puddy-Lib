@@ -6,5 +6,4 @@ const percentageBase = {
 
 };
 
-
 module.exports = percentageBase;

@@ -1,4 +1,3 @@
-
 module.exports = async function (str, regex, asyncFn) {
     const promises = [];
     str.replace(regex, (match, ...args) => {
