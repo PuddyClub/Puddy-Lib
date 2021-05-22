@@ -62,6 +62,9 @@ module.exports = {
     // Percentage
     'percentage': require('./libs/percentage'),
 
+    // Rule 3
+    'rule3': require('./libs/rule3'),
+
     // Version Check
     'versionCheck': require('./get/versionCheck'),
 
