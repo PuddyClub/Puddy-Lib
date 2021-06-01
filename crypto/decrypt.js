@@ -1,6 +1,7 @@
-module.exports = function (tinyCrypto, text) {
+// Module
+const crypto = require('crypto');
+const cryptoAction = function(tinyCrypto, text) {
 
-    const crypto = require('crypto');
     let textParts = text.split(':');
     let iv = Buffer.from(textParts.shift(), tinyCrypto.stringType);
     let encryptedText = Buffer.from(textParts.join(':'), tinyCrypto.stringType);
@@ -11,4 +12,12 @@ module.exports = function (tinyCrypto, text) {
    
     return decrypted.toString();
 
-};
+}
+
+// Export
+module.exports = function (tinyCrypto, text) {
+
+    // Result
+    let result = ''; 
+ 
+ };
