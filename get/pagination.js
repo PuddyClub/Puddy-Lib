@@ -1,22 +1,31 @@
 module.exports = function (query, page, total, url = '', extraClass = '', extraClass2 = '') {
 
+    // Fix URL
     if (url) {
+
+        // Final URL Result
+        const finalURLResult = function (sqT = '') {
+            if (query) { return sqT + query + '&page='; } else { return 'page='; };
+        };
+
+        // Param Fixed
         const params = require('../get/queryUrlJSON')(url);
         if (Object.keys(params).length > 0) {
             if (params.page) {
-                url = url.replace('&' + query + '=' + params.page, '').replace('?' + query + '=' + params.page, '?').replace('?&', '?');
+                url = url.replace(finalURLResult('&') + params.page, '').replace('?' + query + '=' + params.page, '?').replace('?&', '?');
 
                 if (Object.keys(params).length === 1) {
-                    url += query + '=';
+                    url += finalURLResult();
                 } else {
-                    url += '&' + query + '=';
+                    url += finalURLResult('&');
                 }
             } else {
-                url += '&' + query + '=';
+                url += finalURLResult('&');
             }
         } else {
-            url += '?' + query + '=';
+            url += finalURLResult('?');
         }
+
     }
 
     // Pagination
