@@ -14,6 +14,6 @@ module.exports = function (obj) {
     }
 
     // Nothing
-    return null;
+    return 0;
 
 };
