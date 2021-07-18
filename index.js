@@ -1,6 +1,9 @@
 // Modules
 module.exports = {
 
+    // Convert Bytes
+    'convertBytes': require('./libs/convertBytes'),
+
     // HTTP/1.0 Render
     'HTTP/1.0': require('./http/HTTP-1.0'),
 
