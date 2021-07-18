@@ -1,3 +1,4 @@
+// Convert List
 const convertList = {
     kb: 1024,
     mb: 1048576,
@@ -7,6 +8,26 @@ const convertList = {
     eb: 1152921504606847000
 };
 
-module.exports = function (bytes) {
-    return ;
-};
+// Sequence
+const sequence = ['kb', 'mb', 'gb', 'tb', 'pb', 'eb'];
+
+// Module
+module.exports = {
+
+    // List
+    list: convertList,
+
+    // Sequence
+    sequence: sequence,
+
+    // Get
+    get: function (bytes, selected) {
+        return convertList[selected] * bytes;
+    },
+
+    // Convert
+    convert: function (bytes, selected) {
+        return bytes / convertList[selected];
+    }
+
+}
