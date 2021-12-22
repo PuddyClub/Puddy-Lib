@@ -10,6 +10,9 @@ module.exports = {
     // Get Module
     'getModule': require('./get/module'),
 
+    // Moment JS
+    'momentjs': require('./momentjs'),
+
     // Check Domain
     'checkDomain': require('./http/check_domain'),
 
@@ -79,7 +82,7 @@ module.exports = {
 
     // Capitalize
     'capitalize': require('./libs/capitalize'),
-    
+
     // Fetch
     'fetchJSON': require('./http/fetch/json'),
     'fetchText': require('./http/fetch/text'),
