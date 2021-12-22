@@ -1,6 +1,9 @@
 module.exports = {
 
     // Time Duration
-    'timeDuration': require('./timeDuration')
+    'timeDuration': require('./timeDuration'),
+
+    // Age
+    'getAge': require('./getAge')
 
 };
