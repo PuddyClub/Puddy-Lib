@@ -1,11 +1,12 @@
 const moment = require('moment');
-const now = moment();
-module.exports = function(timeData = 0, durationType = 'asSeconds') {
+module.exports = function(timeData = 0, durationType = 'asSeconds', now = null) {
 
     // Number
     if (typeof timeData === "number") {
 
-        var duration = moment.duration(now.clone().add(timeData, 'milliseconds').diff(now));
+        if (!now) { now = moment(); }
+
+        var duration = moment.duration(now.clone().add(timeData, 'milliseconds').diff(now.clone()));
         const result = duration[durationType]();
 
         // Complete
