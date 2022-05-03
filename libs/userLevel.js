@@ -56,10 +56,11 @@ class levelup {
     }
 
     // Give
-    give(user, extraExp = 0, type = 'add') {
+    give(user, extraExp = 0, type = 'add', multi = 1) {
 
         // Get the new user exp
         if (type === "add") { user.exp += this.expGenerator() + extraExp; }
+        // Extra
         else if (type === "extra") { user.exp += extraExp; }
         this.expValidator(user);
 
@@ -76,6 +77,7 @@ class levelup {
 
         // Get the new user exp
         if (type === "add") { user.exp -= this.expGenerator() + extraExp }
+        // Extra
         else if (type === "extra") { user.exp -= extraExp }
         this.expValidator(user);
 
@@ -109,7 +111,7 @@ class levelup {
             user.exp = 0;
 
             // Add More Level
-            if(extraValue > 0) {
+            if (extraValue > 0) {
                 return this.give(user, extraValue, 'extra');
             }
 
@@ -122,7 +124,7 @@ class levelup {
             user.level--;
 
             // Remove more level
-            if(user.exp < 0) {
+            if (user.exp < 0) {
                 extraValue = Math.abs(user.exp);
             }
 
@@ -130,7 +132,7 @@ class levelup {
             user.exp = this.expLevel * user.level;
 
             // Remove More Level
-            if(extraValue > 0) {
+            if (extraValue > 0) {
                 return this.remove(user, extraValue, 'extra');
             }
 
