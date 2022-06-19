@@ -1,9 +1,8 @@
-
-module.exports = function (data, callback) {
+module.exports = function(data, callback) {
 
     // Simple Basic Auth with vanilla JavaScript (ES6)
     // https://stackoverflow.com/questions/23616371/basic-http-authentication-with-node-and-express-4
-    return async (req, res, next) => {
+    return async(req, res, next) => {
 
         // -----------------------------------------------------------------------
         // authentication middleware
@@ -25,17 +24,20 @@ module.exports = function (data, callback) {
         // Custom Error
 
         // Function
+        res.set('WWW-Authenticate', 'Basic realm="401"');
         if (typeof data.customError === "function") {
             await data.customError(req, res);
         }
 
         // String
         else if (typeof data.customError === "string") {
-            res.set('WWW-Authenticate', data.customError);
+            res.status(401).send(data.customError);
         }
 
         // Default
-        else { res.set('WWW-Authenticate', 'Basic realm="401"'); }
+        else {
+            res.status(401).send('Authentication required.');
+        }
 
         // Return Error
         if (typeof callback === "function") {
