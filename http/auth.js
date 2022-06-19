@@ -21,22 +21,11 @@ module.exports = function(data, callback) {
 
         // Access denied...
 
-        // Custom Error
-
         // Function
         res.set('WWW-Authenticate', 'Basic realm="401"');
+        res.status(401);
         if (typeof data.customError === "function") {
             await data.customError(req, res);
-        }
-
-        // String
-        else if (typeof data.customError === "string") {
-            res.status(401).send(data.customError);
-        }
-
-        // Default
-        else {
-            res.status(401).send('Authentication required.');
         }
 
         // Return Error
