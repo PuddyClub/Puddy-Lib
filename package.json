@@ -8,14 +8,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TinyPudding/Puddy-Lib.git"
+        "url": "git+https://github.com/PuddyClub/Puddy-Lib.git"
     },
     "author": "Yasmin Seidel (JasminDreasond)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/TinyPudding/Puddy-Lib/issues"
+        "url": "https://github.com/PuddyClub/Puddy-Lib/issues"
     },
-    "homepage": "https://github.com/TinyPudding/Puddy-Lib#readme",
+    "homepage": "https://github.com/PuddyClub/Puddy-Lib#readme",
     "dependencies": {
         "compare-versions": "^3.6.0",
         "latest-version": "^5.1.0",
